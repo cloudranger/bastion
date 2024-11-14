@@ -1,5 +1,9 @@
 # bastion
-Bastion is a wrapper for FreeBSD bastille - it's bastille templates on steroids and your templates are plain bash so you can DWTFYW !  No limits
+
+"A bastion is a structure projecting outward from the curtain wall of a fortification such as a bastille"
+
+Bastion is a wrapper for FreeBSD bastille - it is bastille templates on steroids.
+Your templates (build files)  are just plain bash so you can DWTFYW with no limits
 
 Based on ideas from a similar script for Incus/LXD and Dockerfile, and frustration with the limitations of bastille templates, this script is born.
 
@@ -13,3 +17,14 @@ CREATE 14.1-RELEASE 10.0.0.1 bastille0
 PKG install --yes samba416
 STOP
 DESTROY
+
+
+Dependencies
+ * bash
+ * bashtools
+
+Why create a dependency on bash ?
+Bash is much richer than bourne shell and allows much more robust scripts to be written, such as local variables, readonly variables, arrays etc.
+The scripts follow the google bash coding guidelines for maximin standardisation
+Bastion makes use of bashtools which is of course written in bash
+ 
