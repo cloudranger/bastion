@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-cp -prv ../bastion/* /usr/local/bin
+mkdir -v /usr/local/bin/bastion
+cp -prv ../bastion/* /usr/local/bin/bastion
