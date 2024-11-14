@@ -29,7 +29,7 @@ Dependencies
 
 Why create a dependency on bash ?
 
-Bash is much richer than bourne shell and allows much more robust scripts to be written, such as local variables, readonly variables, arrays etc.
+Bash is much richer than bourne shell and allows much more robust scripts to be written, with features such as local variables, readonly variables, arrays,m double square brackets (extra operations), regex etc.
 The scripts follow the google bash coding guidelines for maximin standardisation
 Bastion makes use of bashtools which is of course written in bash
  
