@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-mkdir -v /usr/local/bin/bastion
-cp -prv ../bastion/* /usr/local/bin/bastion
+readonly INSTALL=/usr/local/bin/bastion
+readonly DIR=$(dirname $0)
+
+mkdir -v "${INSTALL}"
+cp -prv "${DIR}"/* "${INSTALL}"
+chmod +x "${INSTALL}/bastion.sh"

@@ -29,7 +29,7 @@ source /usr/local/bin/bashtools/msg.sh
 
 function _quit_no_jail_() {
   if [ -z "${BASTION_JAIL}" ]; then
-    echo "jail not set - use JAIL command to set your jail name"
+    msg::short "jail not set - use JAIL command to set your jail name"
     exit 1
   fi
 }
@@ -169,6 +169,29 @@ function CREATE()
 #
 # Custom commands we add to the bastille commands
 
+
+################################################################################
+
+/usr/local/bin/bash: line 1: figlet: command not found
+################################################################################
+
+function CONFIG()
+{
+  user::exit_not_root
+
+  #shellcheck disable=SC3043 # In posix, local is undefined
+  local -r config="$1"
+
+  if [[ ! -f "${config}" -o ! -r "${config}" ]]; then
+    msg::short "Config file not found or not readable: ${config}"
+    exit 1
+  fi
+
+  source "${config}"
+}
+
+
+
 ################################################################################
 #    _       _ _ 
 #   (_) __ _(_) |
@@ -253,10 +276,38 @@ function PACKAGE()
   _quit_no_jail_
 
   #shellcheck disable=SC3043 # In posix, local is undefined
-  local action="$1"
+  local -r action="$1"
   shift 
 
   _run_ bastille pkg "${BASTION_JAIL}" "${action}" -y "$*"
+}
+
+
+################################################################################
+
+function BANNER()
+{
+  local -r msg="$1"
+  msg::line
+  figlet "${msg}"
+  msg::line
+}
+
+
+################################################################################
+
+function COMMENT()
+{
+  local -r msg="$1"
+  echo "# ${msg}"
+
+}
+
+################################################################################
+
+function LINE()
+{
+  msg::line
 }
 
 
