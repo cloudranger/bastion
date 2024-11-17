@@ -284,10 +284,8 @@ function PACKAGE()
 
 function BANNER()
 {
-  local -r msg="$1"
-  msg::line
+  local -r msg="$@"
   figlet "${msg}"
-  msg::line
 }
 
 
@@ -295,7 +293,7 @@ function BANNER()
 
 function COMMENT()
 {
-  local -r msg="$1"
+  local -r msg="$@"
   echo "# ${msg}"
 
 }
@@ -304,7 +302,9 @@ function COMMENT()
 
 function LINE()
 {
-  msg::line
+  local -r char="${1}"
+  local -r count="${2}"
+  msg::line ${char} ${count}
 }
 
 
