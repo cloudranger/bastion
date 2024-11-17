@@ -172,9 +172,6 @@ function CREATE()
 
 ################################################################################
 
-/usr/local/bin/bash: line 1: figlet: command not found
-################################################################################
-
 function CONFIG()
 {
   user::exit_not_root
@@ -182,7 +179,7 @@ function CONFIG()
   #shellcheck disable=SC3043 # In posix, local is undefined
   local -r config="$1"
 
-  if [[ ! -f "${config}" -o ! -r "${config}" ]]; then
+  if [[ ! -f "${config}" || ! -r "${config}" ]]; then
     msg::short "Config file not found or not readable: ${config}"
     exit 1
   fi
